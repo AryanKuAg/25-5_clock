@@ -1,11 +1,13 @@
 import React from "react";
 
-function LengthBtn({ text, value }) {
+function LengthBtn({ text, value , set}) {
   return (
     <div className="flex flex-col items-center">
       <p className="text-2xl font-bold">{text}</p>
       <div className="flex justify-between items-center">
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={() =>{
+          set(pre => pre + 1)
+        }}>
           <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
             <path
               fill="#fff"
@@ -14,7 +16,10 @@ function LengthBtn({ text, value }) {
           </svg>
         </div>
         <p className="font-bold mx-2 text-lg">{value}</p>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={() =>{
+          if(value <= 0) return;
+          set(pre => pre - 1)
+        }}>
           {" "}
           <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
             <path
